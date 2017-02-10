@@ -84,6 +84,7 @@ class PCS_VC_Integration {
      * @return      void
      */
     public function vcMap() {
+        // post-content
         vc_map( array(
             'name' => 'Post Content',
             'base' => 'post-content',
@@ -91,60 +92,27 @@ class PCS_VC_Integration {
             'description' => 'Display the content of one post within another post.',
             'params' => array(
                 self::idParam(),
-                array(
-                    'param_name' => 'show_title',
-                    'heading' => 'Display the post title?',
-                    'description' => 'Whether or not to show the post title at the top of the content. By default, the title is wrapped in h2 tags.',
-                    'value' => array( __( 'Yes', 'js_composer' ) => true ),
-                    'type' => 'checkbox',
-                    'admin_label' => true,
-                    'group' => 'Layout',
-                ),
-                array(
-                    'param_name' => 'show_excerpt',
-                    'heading' => 'Display an excerpt of the post content?',
-                    'description' => 'Determines whether to default to showing the post excerpt instead of the post content (still falls back to post content if the excerpt is not set).',
-                    'value' => array( __( 'Yes', 'js_composer' ) => true ),
-                    'type' => 'checkbox',
-                    'admin_label' => true,
-                    'group' => 'Layout',
-                ),
-                array(
-                    'param_name' => 'excerpt_length',
-                    'heading' => 'Limit the excerpt to how many words?',
-                    'description' => 'If you would like to limit the length of the content/excerpt shown on the page, specify the maximum number of words that should be shown (a read more link will automatically be appended to any entries that exceed that limit).',
-                    'type' => 'textfield',
-                    'dependency' => array( 'element' => 'show_excerpt',' value' => array( "1" ), 'not_empty' => true),
-                    'admin_label' => true,
-                    'group' => 'Layout',
-                ),
-                array(
-                    'param_name' => 'show_image',
-                    'heading' => 'Display the featured image with the post?',
-                    'description' => 'Determines whether or not to display the featured image (if so, this appears before the content).',
-                    'value' => array( __( 'Yes', 'js_composer' ) => true ),
-                    'type' => 'checkbox',
-                    'admin_label' => true,
-                    'group' => 'Featured Image',
-                ),
-                array(
-                    'param_name' => 'image_width',
-                    'heading' => 'Image width',
-                    'description' => 'The width, in pixels, to which the featured image should be sized.',
-                    'type' => 'textfield',
-                    'dependency' => array( 'element' => 'show_image',' value' => array( "1" ), 'not_empty' => true),
-                    'admin_label' => true,
-                    'group' => 'Featured Image',
-                ),
-                array(
-                    'param_name' => 'image_height',
-                    'heading' => 'Image height',
-                    'description' => 'The height, in pixels, to which the featured image should be sized.',
-                    'type' => 'textfield',
-                    'dependency' => array( 'element' => 'show_image',' value' => array( "1" ), 'not_empty' => true),
-                    'admin_label' => true,
-                    'group' => 'Featured Image',
-                ),
+                self::showTitleParam(),
+                self::showExcerptParam(),
+                self::excerptLengthParam(),
+                self::showImageParam(),
+                self::imageWidthParam(),
+                self::imageHeightParam(),
+            ),
+        ) );
+
+        // post-list
+        vc_map( array(
+            'name' => 'Post List',
+            'base' => 'post-list',
+            'category' => 'Content',
+            'description' => 'Display the content of one post within another post.',
+            'params' => array(
+                self::showExcerptParam(),
+                self::excerptLengthParam(),
+                self::showImageParam(),
+                self::imageWidthParam(),
+                self::imageHeightParam(),
             ),
         ) );
     }
@@ -173,6 +141,125 @@ class PCS_VC_Integration {
             'group' => 'Data',
         );
     }
+
+    /**
+     * This is a shortcode parameter to enable showing the post title.
+     *
+     * @access       protected
+     * @since        1.0.0
+     * @return       array describing a shortcode parameter
+     */
+    protected static function showTitleParam() {
+        return array(
+            'param_name' => 'show_title',
+            'heading' => 'Display the post title?',
+            'description' => 'Whether or not to show the post title at the top of the content. By default, the title is wrapped in h2 tags.',
+            'value' => array( __( 'Yes', 'js_composer' ) => true ),
+            'type' => 'checkbox',
+            'admin_label' => true,
+            'group' => 'Layout',
+        );
+    }
+
+    /**
+     * This is a shortcode parameter to select showing the excerpt (instead of the full post content).
+     *
+     * @access       protected
+     * @since        1.0.0
+     * @return       array describing a shortcode parameter
+     */
+    protected static function showExcerptParam() {
+        return array(
+            'param_name' => 'show_excerpt',
+            'heading' => 'Display an excerpt of the post content?',
+            'description' => 'Determines whether to default to showing the post excerpt instead of the post content (still falls back to post content if the excerpt is not set).',
+            'value' => array( __( 'Yes', 'js_composer' ) => "true" ),
+            'type' => 'checkbox',
+            'admin_label' => true,
+            'group' => 'Layout',
+        );
+    }
+
+    /**
+     * This is a shortcode parameter to define the length of the excerpt if shown.
+     * @see showExcerptParam
+     *
+     * @access       protected
+     * @since        1.0.0
+     * @return       array describing a shortcode parameter
+     */
+    protected static function excerptLengthParam() {
+        return array(
+            'param_name' => 'excerpt_length',
+            'heading' => 'Excerpt length [words]',
+            'description' => 'Limit the length of the content/excerpt shown. Specify the maximum number of words (a read more link will automatically be appended to any entries that exceed that limit).',
+            'type' => 'textfield',
+            'dependency' => array( 'element' => 'show_excerpt', 'not_empty' => true),
+            'admin_label' => true,
+            'group' => 'Layout',
+        );
+    }
+
+    /**
+     * This is a shortcode parameter to enable showing the image.
+     *
+     * @access       protected
+     * @since        1.0.0
+     * @return       array describing a shortcode parameter
+     */
+    protected static function showImageParam() {
+        return array(
+            'param_name' => 'show_image',
+            'heading' => 'Display the featured image with the post?',
+            'description' => 'Determines whether or not to display the featured image (if so, this appears before the content).',
+            'value' => array( __( 'Yes', 'js_composer' ) => true ),
+            'type' => 'checkbox',
+            'admin_label' => true,
+            'group' => 'Featured Image',
+        );
+    }
+
+    /** 
+     * This is a shortcode parameter to define the width of the image shown.
+     *
+     * @access       protected
+     * @since        1.0.0
+     * @return       array describing a shortcode parameter
+     */
+    protected static function imageWidthParam() {
+        return array(
+            'param_name' => 'image_width',
+            'heading' => 'Image width',
+            'description' => 'The width, in pixels, to which the featured image should be sized.',
+            'type' => 'textfield',
+            'dependency' => array( 'element' => 'show_image',' value' => array( "1" ), 'not_empty' => true),
+            'admin_label' => true,
+            'group' => 'Featured Image',
+        );
+    }
+
+    /** 
+     * This is a shortcode parameter to define the height of the image shown.
+     *      
+     * @access       protected
+     * @since        1.0.0
+     * @return       array describing a shortcode parameter
+     */     
+    protected static function imageHeightParam() {        
+        return array(
+            'param_name' => 'image_height',
+            'heading' => 'Image height',
+            'description' => 'The height, in pixels, to which the featured image should be sized.',
+            'type' => 'textfield',
+            'dependency' => array( 'element' => 'show_image',' value' => array( "1" ), 'not_empty' => true),
+            'admin_label' => true,
+            'group' => 'Featured Image',
+        );
+    }
+
+    /******************
+     * helper functions
+     ******************/
 
     /**
      * This collects all posts of all post types.
