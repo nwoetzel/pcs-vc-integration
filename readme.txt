@@ -1,4 +1,4 @@
-=== Easy Digital Downloads Visual Composer Integration ===
+=== Post Content Shortcodes Visual Composer Integration ===
 Contributors: nwoetzel
 Tags: pcs, post content shortcodes, vc, visual composer
 Requires at least: 4.6
