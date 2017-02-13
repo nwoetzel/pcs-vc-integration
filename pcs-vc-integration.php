@@ -297,15 +297,15 @@ class PCS_VC_Integration {
  * @since       1.0.0
  * @return      \PCS_VC_Integration The one true PCS_VC_Integration
  */
-function PCS_VC_Integration_load() {
+function pcs_vc_integration_load() {
     return PCS_VC_Integration::instance();
 }
-add_action( 'plugins_loaded', 'PCS_VC_Integration_load' );
+add_action( 'plugins_loaded', 'pcs_vc_integration_load' );
 
 /**
  * A nice function name to retrieve the instance that's created on plugins loaded
  *
- * @since 2.2.3
+ * @since 1.0.0
  * @return object PCS_VC_Integration
  */
 function pcs_vc_integration() {
