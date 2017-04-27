@@ -4,7 +4,7 @@
  * Plugin Name: Post Content Shortcodes Visual Composer Integration
  * Plugin URI:  https://github.com/nwoetzel/pcs-vc-integration
  * Description: This plugin maps post-content-shortcodes shortcodes to WPBakery Visual Composer elements.
- * Version:     1.1.0
+ * Version:     1.2.0
  * Author:      Nils Woetzel
  * Author URI:  https://github.com/nwoetzel
  * Text Domain: pcs-vc-integration
@@ -12,6 +12,10 @@
 
 // Exit if accessed directly
 if( !defined( 'ABSPATH' ) ) exit;
+
+if ( file_exists( __DIR__ . '/vendor/autoload.php' ) ) {
+        require __DIR__ . '/vendor/autoload.php';
+}
 
 if( !class_exists( 'PCS_VC_Integration' ) ) {
 
@@ -60,7 +64,7 @@ class PCS_VC_Integration {
      */
     private function setup_constants() {
         // Plugin version
-        define( 'PCS_VC_INTERGATION_VER', '1.1.0' );
+        define( 'PCS_VC_INTERGATION_VER', '1.2.0' );
         // Plugin path
         define( 'PCS_VC_INTERGATION_DIR', plugin_dir_path( __FILE__ ) );
         // Plugin URL

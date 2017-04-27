@@ -1,0 +1,31 @@
+{
+	"name"       : "nwoetzel/pcs-vc-integration",
+	"description": "Wordpress integrating shortcodes of post-content-shortcodes into visual composer.",
+	"keywords"   : ["wordpress", "post-content-shortcodes", "visual-composer", "js_composer"],
+	"type"       : "wordpress-plugin",
+	"homepage"   : "https://github.com/nwoetzel/pcs-vc-integration",
+	"license"    : "GPLv2",
+	"authors"    : [
+		{
+			"name"    : "Nils Woetzel",
+			"email"   : "nils.woetzel@h-its.org",
+			"homepage": "https://www.h-its.org.net/"
+		}
+	],
+	"support"    : {
+		"issues": "https://github.com/nwoetzel/pcs-vc-integration/issues",
+		"source": "https://github.com/nwoetzel/pcs-vc-integration"
+	},
+	"repositories": [
+		{
+			"type": "composer",
+			"url" : "https://wpackagist.org"
+		}
+	],
+	"require"    : {
+		"composer/installers": "~1.0"
+	},
+	"suggest" : {
+		"wpackagist-plugin/post-content-shortcodes": "The Post Content Shortcodes wordpress plugin"
+	}
+}
