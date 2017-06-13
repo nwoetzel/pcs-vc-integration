@@ -64,7 +64,7 @@ class PCS_VC_Integration {
      */
     private function setup_constants() {
         // Plugin version
-        define( 'PCS_VC_INTERGATION_VER', '1.2.0' );
+        define( 'PCS_VC_INTERGATION_VER', '1.3.0' );
         // Plugin path
         define( 'PCS_VC_INTERGATION_DIR', plugin_dir_path( __FILE__ ) );
         // Plugin URL

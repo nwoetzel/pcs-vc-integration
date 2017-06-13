@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PCS VC Integration 1.1.0\n"
 "Report-Msgid-Bugs-To: Nils Woetzel <nils.woetzel@h-its.org>\n"
-"POT-Creation-Date: 2017-03-14 08:21+0000\n"
+"POT-Creation-Date: 2017-06-13 14:09+0200\n"
 "PO-Revision-Date: \n"
 "Last-Translator: Nils Woetzel <nils.woetzel@h-its.org>\n"
 "Language-Team: \n"
@@ -24,105 +24,131 @@ msgstr ""
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: pcs-vc-integration.php:124
+#: pcs-vc-integration.php:128
 msgid "Post Content"
 msgstr ""
 
-#: pcs-vc-integration.php:126 pcs-vc-integration.php:143
+#: pcs-vc-integration.php:130 pcs-vc-integration.php:149
 msgid "Content"
 msgstr ""
 
-#: pcs-vc-integration.php:127 pcs-vc-integration.php:144
+#: pcs-vc-integration.php:131
 msgid "Display the content of one post within another post."
 msgstr ""
 
-#: pcs-vc-integration.php:141
+#: pcs-vc-integration.php:147
 msgid "Post List"
 msgstr ""
 
-#: pcs-vc-integration.php:165
+#: pcs-vc-integration.php:150
+msgid "Display the content of a list of posts within another post."
+msgstr ""
+
+#: pcs-vc-integration.php:173
 msgid "Post"
 msgstr ""
 
-#: pcs-vc-integration.php:166
+#: pcs-vc-integration.php:174
 msgid "Select a post. They are grouped by post type"
 msgstr ""
 
-#: pcs-vc-integration.php:176
+#: pcs-vc-integration.php:184
 msgid "Data"
 msgstr ""
 
-#: pcs-vc-integration.php:190
+#: pcs-vc-integration.php:198
 msgid "Display the post title?"
 msgstr ""
 
-#: pcs-vc-integration.php:191
+#: pcs-vc-integration.php:199
 msgid ""
 "Whether or not to show the post title at the top of the content. "
 "By default, the title is wrapped in h2 tags."
 msgstr ""
 
-#: pcs-vc-integration.php:192 pcs-vc-integration.php:211
-#: pcs-vc-integration.php:250
+#: pcs-vc-integration.php:200 pcs-vc-integration.php:219
+#: pcs-vc-integration.php:258 pcs-vc-integration.php:296
+#: pcs-vc-integration.php:316
 msgid "Yes"
 msgstr ""
 
-#: pcs-vc-integration.php:195 pcs-vc-integration.php:214
-#: pcs-vc-integration.php:234
+#: pcs-vc-integration.php:203 pcs-vc-integration.php:222
+#: pcs-vc-integration.php:242 pcs-vc-integration.php:319
 msgid "Layout"
 msgstr ""
 
-#: pcs-vc-integration.php:209
+#: pcs-vc-integration.php:217
 msgid "Display an excerpt of the post content?"
 msgstr ""
 
-#: pcs-vc-integration.php:210
+#: pcs-vc-integration.php:218
 msgid ""
 "Determines whether to default to showing the post excerpt instead "
 "of the post content (still falls back to post content if the "
 "excerpt is not set)."
 msgstr ""
 
-#: pcs-vc-integration.php:229
+#: pcs-vc-integration.php:237
 msgid "Excerpt length [words]"
 msgstr ""
 
-#: pcs-vc-integration.php:230
+#: pcs-vc-integration.php:238
 msgid ""
 "Limit the length of the content/excerpt shown. Specify the maximum "
 "number of words (a read more link will automatically be appended "
 "to any entries that exceed that limit)."
 msgstr ""
 
-#: pcs-vc-integration.php:248
+#: pcs-vc-integration.php:256
 msgid "Display the featured image with the post?"
 msgstr ""
 
-#: pcs-vc-integration.php:249
+#: pcs-vc-integration.php:257
 msgid ""
 "Determines whether or not to display the featured image (if so, "
 "this appears before the content)."
 msgstr ""
 
-#: pcs-vc-integration.php:253 pcs-vc-integration.php:272
-#: pcs-vc-integration.php:291
+#: pcs-vc-integration.php:261 pcs-vc-integration.php:280
+#: pcs-vc-integration.php:300 pcs-vc-integration.php:338
 msgid "Featured Image"
 msgstr ""
 
-#: pcs-vc-integration.php:267
+#: pcs-vc-integration.php:275
 msgid "Image width"
 msgstr ""
 
-#: pcs-vc-integration.php:268
+#: pcs-vc-integration.php:276
 msgid ""
 "The width, in pixels, to which the featured image should be sized."
 msgstr ""
 
-#: pcs-vc-integration.php:286
+#: pcs-vc-integration.php:294
+msgid "Link image"
+msgstr ""
+
+#: pcs-vc-integration.php:295
+msgid ""
+"Set this to true/1 if you would like to wrap the featured image in "
+"a link to the post."
+msgstr ""
+
+#: pcs-vc-integration.php:314
+msgid "Shortcodes"
+msgstr ""
+
+#: pcs-vc-integration.php:315
+msgid ""
+"By default, this plugin strips shortcodes out of the post content/"
+"excerpt. If you would like to attempt to process/render shortcodes "
+"in the content, set this flag to true."
+msgstr ""
+
+#: pcs-vc-integration.php:333
 msgid "Image height"
 msgstr ""
 
-#: pcs-vc-integration.php:287
+#: pcs-vc-integration.php:334
 msgid ""
 "The height, in pixels, to which the featured image should be sized."
 msgstr ""
