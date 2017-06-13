@@ -4,7 +4,7 @@
  * Plugin Name: Post Content Shortcodes Visual Composer Integration
  * Plugin URI:  https://github.com/nwoetzel/pcs-vc-integration
  * Description: This plugin maps post-content-shortcodes shortcodes to WPBakery Visual Composer elements.
- * Version:     1.2.0
+ * Version:     1.3.0
  * Author:      Nils Woetzel
  * Author URI:  https://github.com/nwoetzel
  * Text Domain: pcs-vc-integration
@@ -134,9 +134,11 @@ class PCS_VC_Integration {
                 self::showTitleParam(),
                 self::showExcerptParam(),
                 self::excerptLengthParam(),
+                self::shortcodesParam(),
                 self::showImageParam(),
                 self::imageWidthParam(),
                 self::imageHeightParam(),
+                self::linkImageParam(),
             ),
         ) );
 
@@ -145,13 +147,15 @@ class PCS_VC_Integration {
             'name' => __( 'Post List', self::TEXT_DOMAIN),
             'base' => 'post-list',
             'category' => __( 'Content', self::TEXT_DOMAIN),
-            'description' => __( 'Display the content of one post within another post.', self::TEXT_DOMAIN),
+            'description' => __( 'Display the content of a list of posts within another post.', self::TEXT_DOMAIN),
             'params' => array(
                 self::showExcerptParam(),
                 self::excerptLengthParam(),
+                self::shortcodesParam(),
                 self::showImageParam(),
                 self::imageWidthParam(),
                 self::imageHeightParam(),
+                self::linkImageParam(),
             ),
         ) );
     }
@@ -274,6 +278,45 @@ class PCS_VC_Integration {
             'dependency' => array( 'element' => 'show_image',' value' => array( "1" ), 'not_empty' => true),
             'admin_label' => true,
             'group' => __( 'Featured Image', self::TEXT_DOMAIN),
+        );
+    }
+
+    /**
+     * This is a shortcode parameter to enable the link for the image.
+     *
+     * @access       protected
+     * @since        1.3.0
+     * @return       array describing a shortcode parameter
+     */
+    protected static function linkImageParam() {
+        return array(
+            'param_name' => 'link_image',
+            'heading' => __( 'Link image', self::TEXT_DOMAIN),
+            'description' => __( 'Set this to true/1 if you would like to wrap the featured image in a link to the post.', self::TEXT_DOMAIN),
+            'value' => array( __( 'Yes', 'js_composer' ) => true ),
+            'type' => 'checkbox',
+            'dependency' => array( 'element' => 'show_image',' value' => array( "1" ), 'not_empty' => true),
+            'admin_label' => true,
+            'group' => __( 'Featured Image', self::TEXT_DOMAIN),
+        );
+    }
+
+    /**
+     * This is a shortcode parameter to enable parsing of included shortcodes in post or excerpt.
+     *
+     * @access       protected
+     * @since        1.3.0
+     * @return       array describing a shortcode parameter
+     */
+    protected static function shortcodesParam() {
+        return array(
+            'param_name' => 'shortcodes',
+            'heading' => __( 'Shortcodes', self::TEXT_DOMAIN),
+            'description' => __( 'By default, this plugin strips shortcodes out of the post content/excerpt. If you would like to attempt to process/render shortcodes in the content, set this flag to true.', self::TEXT_DOMAIN),
+            'value' => array( __( 'Yes', 'js_composer' ) => true ),
+            'type' => 'checkbox',
+            'admin_label' => true,
+            'group' => __( 'Layout', self::TEXT_DOMAIN),
         );
     }
 
